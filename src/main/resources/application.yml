@@ -1,0 +1,14 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: deepseek-agent
+
+deepseek:
+  base-url: https://api.deepseek.com
+  # 使用环境变量，勿将密钥写入仓库：set DEEPSEEK_API_KEY=sk-xxx
+  api-key: ${DEEPSEEK_API_KEY:}
+  models:
+    flash: deepseek-v4-flash
+    pro: deepseek-v4-pro

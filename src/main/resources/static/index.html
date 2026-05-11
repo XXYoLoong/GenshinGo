@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>DeepSeek 风格对话</title>
+    <link rel="stylesheet" href="/css/app.css"/>
+</head>
+<body>
+<div class="app">
+    <aside class="sidebar">
+        <div class="sidebar-top">
+            <div class="brand">
+                <span class="brand-mark">◆</span>
+                <span class="brand-text">deepseek</span>
+            </div>
+            <div class="sidebar-tools">
+                <button type="button" class="icon-btn" title="搜索" aria-label="搜索">⌕</button>
+                <button type="button" class="icon-btn" id="btnCollapse" title="收起侧栏" aria-label="收起">⟨</button>
+            </div>
+        </div>
+        <button type="button" class="new-chat" id="btnNewChat">
+            <span class="new-chat-icon">+</span>
+            开启新对话
+        </button>
+        <div class="history" id="historyList"></div>
+        <div class="sidebar-user">
+            <span class="user-avatar">👤</span>
+            <span class="user-id">本地会话</span>
+            <button type="button" class="icon-btn" aria-label="更多">⋯</button>
+        </div>
+    </aside>
+    <main class="main">
+        <div class="center-wrap" id="emptyState">
+            <div class="mascot" aria-hidden="true">🐋</div>
+            <p class="hero-title">使用快速模式开始对话</p>
+            <div class="mode-row">
+                <button type="button" class="mode-pill active" data-mode="flash" id="modeFlash">
+                    <span class="mode-icon">⚡</span> 快速模式
+                </button>
+                <button type="button" class="mode-pill" data-mode="pro" id="modePro">
+                    <span class="mode-icon">◇</span> 专家模式
+                </button>
+            </div>
+        </div>
+        <div class="messages" id="messages" hidden></div>
+        <div class="composer-wrap">
+            <div class="composer">
+                <textarea id="input" rows="1" placeholder="给 DeepSeek 发送消息"></textarea>
+                <div class="composer-bottom">
+                    <div class="toggles">
+                        <button type="button" class="pill-toggle" id="toggleThink" aria-pressed="false">
+                            <span>🧠</span> 深度思考
+                        </button>
+                        <button type="button" class="pill-toggle" id="toggleSearch" aria-pressed="false">
+                            <span>🌐</span> 智能搜索
+                        </button>
+                    </div>
+                    <div class="composer-actions">
+                        <button type="button" class="icon-btn" title="附件（演示）" disabled>📎</button>
+                        <button type="button" class="send-btn" id="btnSend" title="发送">↑</button>
+                    </div>
+                </div>
+            </div>
+            <p class="hint" id="statusHint"></p>
+        </div>
+    </main>
+</div>
+<script src="/js/app.js"></script>
+</body>
+</html>
