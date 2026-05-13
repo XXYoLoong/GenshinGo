@@ -15,7 +15,7 @@ public class WebClientConfig {
     public WebClient deepSeekWebClient(DeepSeekProperties props) {
         return WebClient.builder()
                 .baseUrl(props.getBaseUrl())
-                .defaultHeader(HttpHeaders.AUTHORIZATION, "Bearer " + props.getApiKey())
+                .defaultHeader(HttpHeaders.ACCEPT, MediaType.APPLICATION_JSON_VALUE)
                 .defaultHeader(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
                 .build();
     }

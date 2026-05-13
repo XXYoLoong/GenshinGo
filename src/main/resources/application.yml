@@ -3,12 +3,18 @@ server:
 
 spring:
   application:
-    name: deepseek-agent
+    name: genshingo
 
 deepseek:
   base-url: https://api.deepseek.com
-  # 使用环境变量，勿将密钥写入仓库：set DEEPSEEK_API_KEY=sk-xxx
+  # 使用环境变量，勿将密钥写入仓库；部署到云端时由 systemd/container 注入。
   api-key: ${DEEPSEEK_API_KEY:}
+  request-timeout-seconds: 90
+  cloud:
+    # 配置后优先调用你的云端聊天代理，例如: http://47.121.183.23/api/ai/text 或 https://your-domain/api/chat
+    # 前端仍只调用本 Java 后端 /api/chat，密钥只存在云端代理或本 Java 后端环境变量中。
+    chat-url: ${CLOUD_CHAT_API_URL:}
+    token: ${CLOUD_API_TOKEN:}
   models:
     flash: deepseek-v4-flash
     pro: deepseek-v4-pro

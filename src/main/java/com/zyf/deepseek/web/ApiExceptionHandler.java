@@ -14,15 +14,15 @@ public class ApiExceptionHandler {
 
     @ExceptionHandler(IllegalStateException.class)
     public ResponseEntity<Map<String, String>> state(IllegalStateException e) {
-        HttpStatus status = e.getMessage() != null && e.getMessage().contains("DEEPSEEK_API_KEY")
+        HttpStatus status = e.getMessage() != null && e.getMessage().contains("密钥")
                 ? HttpStatus.SERVICE_UNAVAILABLE
                 : HttpStatus.BAD_GATEWAY;
-        return ResponseEntity.status(status).body(Map.of("error", e.getMessage()));
+        return ResponseEntity.status(status).body(Map.of("error", safe(e.getMessage())));
     }
 
     @ExceptionHandler(IllegalArgumentException.class)
     public ResponseEntity<Map<String, String>> badArg(IllegalArgumentException e) {
-        return ResponseEntity.badRequest().body(Map.of("error", e.getMessage()));
+        return ResponseEntity.badRequest().body(Map.of("error", safe(e.getMessage())));
     }
 
     @ExceptionHandler(HttpMessageNotReadableException.class)
@@ -37,5 +37,15 @@ public class ApiExceptionHandler {
                 .map(err -> err.getField() + ": " + err.getDefaultMessage())
                 .orElse("参数校验失败");
         return ResponseEntity.badRequest().body(Map.of("error", msg));
+    }
+
+    @ExceptionHandler(Exception.class)
+    public ResponseEntity<Map<String, String>> fallback(Exception e) {
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                .body(Map.of("error", "服务端处理失败，请稍后重试"));
+    }
+
+    private static String safe(String message) {
+        return message == null || message.isBlank() ? "请求处理失败" : message;
     }
 }

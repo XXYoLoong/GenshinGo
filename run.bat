@@ -44,5 +44,10 @@ if not exist "%JAVA_HOME%\bin\java.exe" (
 
 echo [信息] 工作目录: %CD%
 echo [信息] JAVA_HOME: %JAVA_HOME%
+if defined SERVER_PORT (
+  echo [信息] 服务端口: %SERVER_PORT% ^(环境变量 SERVER_PORT，会覆盖 application.yml 中的 server.port^)
+) else (
+  echo [提示] 默认端口 8080。若启动失败提示端口被占用，可先执行 set SERVER_PORT=8081，或在上一级目录运行: 一键启动.bat 8081
+)
 echo [信息] 使用 Maven Wrapper 启动 Spring Boot...
 call "%~dp0mvnw.cmd" spring-boot:run %*

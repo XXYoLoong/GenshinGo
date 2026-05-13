@@ -8,9 +8,7 @@ import java.util.List;
 
 public class ClientChatRequest {
 
-    /**
-     * flash → deepseek-v4-flash（快速模式），pro → deepseek-v4-pro（专家模式）
-     */
+    /** flash 对应快速模式，pro 对应专家模式，具体模型名由 application.yml 配置。 */
     @NotNull
     private ChatMode mode = ChatMode.flash;
 
@@ -18,7 +16,7 @@ public class ClientChatRequest {
     @Valid
     private List<ChatMessageDto> messages;
 
-    /** 对应网页「深度思考」开关，开启时请求携带 thinking 参数（见 DeepSeek V4 文档） */
+    /** 对应网页「深度思考」开关。 */
     private boolean deepThinking;
 
     public ChatMode getMode() {
