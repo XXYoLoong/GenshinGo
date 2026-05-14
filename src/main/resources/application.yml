@@ -6,6 +6,8 @@ spring:
     name: genshingo
 
 deepseek:
+  # 为 true 时在应用就绪后打开默认浏览器；run.bat 会传入 true（Windows 下用 start 调起，不依赖 headless）
+  launch-browser: false
   base-url: https://api.deepseek.com
   # 使用环境变量，勿将密钥写入仓库；部署到云端时由 systemd/container 注入。
   api-key: ${DEEPSEEK_API_KEY:}
