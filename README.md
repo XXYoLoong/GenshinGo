@@ -67,12 +67,27 @@ deepseek-agent/
 
 ### 1. 克隆仓库
 
+仓库在 GitHub 上建议命名为 **GenshinGo**（与产品名一致）。若已完成重命名，使用：
+
 ```bash
 git clone https://github.com/XXYoLoong/GenshinGo.git
 cd GenshinGo
 ```
 
-（若你从旧仓库名 `JAVA-DEEPSEEK` 迁移，请在 GitHub 上完成重命名后，将本地 `origin` 指向新地址：`git remote set-url origin https://github.com/XXYoLoong/GenshinGo.git`。）
+若你尚未在 GitHub 上改名、仍使用旧仓库名 **JAVA-DEEPSEEK**，可暂时：
+
+```bash
+git clone https://github.com/XXYoLoong/JAVA-DEEPSEEK.git
+cd JAVA-DEEPSEEK
+```
+
+**在 GitHub 上改名**：仓库页 → **Settings** → **General** → **Repository name** → 改为 `GenshinGo` → **Rename**。改名后旧地址会重定向，但建议本地执行：
+
+```bash
+git remote set-url origin https://github.com/XXYoLoong/GenshinGo.git
+```
+
+以便与文档中的克隆地址一致。
 
 ### 2. 配置密钥（直连官方 API）
 
