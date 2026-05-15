@@ -258,6 +258,12 @@ java -jar target/deepseek-agent-1.0.0-SNAPSHOT.jar
 
 ---
 
+## AI 开发提示词
+
+使用 Cursor、Copilot 等 AI 工具维护本项目时，请先阅读 [`AI_PROMPT.md`](AI_PROMPT.md)（含可粘贴的系统提示词、架构说明与任务模板）。
+
+---
+
 ## 开源协议
 
 本项目使用 **Apache License 2.0**，详见仓库根目录 [`LICENSE`](LICENSE)。
